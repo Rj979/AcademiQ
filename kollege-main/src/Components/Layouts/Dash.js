@@ -15,8 +15,13 @@ const Dash = () => {
 
   useEffect(() => {
     const getPapers = async () => {
-      const response = await axios.get(`paper/${user.userType}/${user._id}`);
-      setPaperList(response.data);
+      try {
+        const response = await axios.get(`/api/paper/${user.userType}/${user.id}`);
+        setPaperList(response.data);
+      } catch (error) {
+        console.error('Error fetching papers:', error);
+        setPaperList([]);
+      }
     };
     getPapers();
   }, [setPaperList, user]);

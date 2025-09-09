@@ -1,10 +1,39 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL:
-    "http://localhost:4000",
-    // "http://localhost:3500",
-    //? this is the nodejs port, which is 3500 by default, and not the react port(3000).
-
+const api = axios.create({
+  baseURL: "http://localhost:8080",
+  // Backend Spring Boot API runs on port 8080
   headers: { "Content-Type": "application/json" },
 });
+
+// Add request interceptor to include JWT token
+api.interceptors.request.use(
+  (config) => {
+    const userDetails = localStorage.getItem("userDetails");
+    if (userDetails) {
+      const user = JSON.parse(userDetails);
+      if (user.token) {
+        config.headers.Authorization = `Bearer ${user.token}`;
+      }
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add response interceptor to handle token expiration
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Token expired or invalid, clear user data
+      localStorage.removeItem("userDetails");
+      window.location.href = "/";
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;

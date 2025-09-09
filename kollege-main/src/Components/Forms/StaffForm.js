@@ -28,8 +28,12 @@ const StaffForm = () => {
   const addStaff = async (e) => {
     e.preventDefault();
     try {
-      const reqData = JSON.stringify(staff);
-      const response = await axios.post("staff/ ", reqData);
+      const userData = {
+        username: staff.username,
+        password: staff.password,
+        role: "STAFF"
+      };
+      const response = await axios.post("/auth/register", userData);
       navigate("/");
       toast.success(response.data.message);
     } catch (err) {

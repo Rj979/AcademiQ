@@ -25,8 +25,12 @@ const StudentForm = () => {
   const addStudent = async (e) => {
     e.preventDefault();
     try {
-      const reqData = JSON.stringify(student);
-      const response = await axios.post("student", reqData);
+      const userData = {
+        username: student.username,
+        password: student.password,
+        role: "STUDENT"
+      };
+      const response = await axios.post("/auth/register", userData);
       navigate("/");
       toast.success(response.data.message);
     } catch (err) {
