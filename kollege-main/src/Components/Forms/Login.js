@@ -28,11 +28,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (userType === "") {
-      setError({
-        response: {
-          data: "Select User Type",
-        },
-      });
+      // Do nothing until a user type is selected
+      return;
     } else {
       setButtonText("Loading...");
       slowLoadingIndicator();
@@ -73,12 +70,10 @@ const Login = () => {
             </header>
           )}
           <CircleDesign />
-          <section className="z-0 mb-4 flex items-center duration-200 gap-2 whitespace-nowrap text-6xl md:text-8xl lg:gap-4">
+          <section className="z-0 mb-4 flex items-center duration-200 gap-3 whitespace-nowrap text-6xl md:text-8xl lg:gap-4">
             <FaUniversity />
-            <h1 className="font-spectral font-semibold  text-slate-900  dark:text-slate-300 ">
-              K
-              <span className="inline-block h-10 w-10 rounded-full bg-violet-900 dark:bg-violet-600 md:h-14 md:w-14 xl:h-14 xl:w-14"></span>
-              llege
+            <h1 className="font-spectral font-semibold text-slate-900 dark:text-slate-300">
+              AcademiQ
             </h1>
           </section>
           <section className="z-0 w-[65%] justify-self-center rounded-lg bg-slate-100 opacity-80 hover:opacity-100 focus:opacity-100 duration-200 dark:bg-[#060913] sm:w-[min(50%,360px)] md:w-[min(40%,360px)] xl:w-[min(23%,360px)] ">
@@ -128,8 +123,8 @@ const Login = () => {
                 </div>
               </section>
               <section className="rounded-b-lg px-4 pb-4 dark:border-x-[1.5px] dark:border-b-[1.5px] dark:border-solid dark:border-violet-900">
-              {userType?
-              <>
+              {userType && (
+                <>
                 <input
                   className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
                   placeholder="username"
@@ -164,18 +159,8 @@ const Login = () => {
                   {buttonText}
                 </button>
                 </>
-                : <p className="w-full bg-violet-300 dark:bg-violet-950/90 duration-200 rounded p-4 my-12 text-center">Select User Type</p>  }
-                {error ? <ErrorStrip error={error} /> : ""}
-                <p className="inline text-slate-600 dark:text-violet-200">
-                  Click to{" "}
-                </p>
-                <button
-                  type="button"
-                  className="font-semibold text-violet-600 decoration-2 hover:underline focus:underline   dark:text-violet-400"
-                  onClick={() => navigate("./register/reg_student")}
-                  >
-                  Register
-                </button>
+              )}
+                {error && userType !== "" ? <ErrorStrip error={error} /> : ""}
               </section>
             </form>
           </section>

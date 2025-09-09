@@ -35,14 +35,14 @@ const TimeScheduleForm = () => {
   useEffect(() => {
     const fetchTimeSchedule = async () => {
       try {
-        // fetching time schedule record
-        const response = await axios.get("time_schedule/" + user._id);
-        // saving record id for updating/deleting record
-        setId(response.data._id);
-        delete response.data.schedule._id;
-        setTimeSchedule(response.data.schedule);
+        // derive department from user's available papers
+        const department = paperList?.[0]?.department;
+        if (!department) throw new Error("Department not found");
+        const response = await axios.get(`/api/department_schedule/${department}`);
+        setId(response.data.id);
+        const schedule = typeof response.data.schedule === "string" ? JSON.parse(response.data.schedule) : response.data.schedule;
+        setTimeSchedule(schedule);
       } catch (err) {
-        // incase the record doesn't exist
         if (err?.response?.status === 404) {
           setDisabled(false);
           setTimeSchedule({
@@ -56,23 +56,21 @@ const TimeScheduleForm = () => {
       }
     };
     fetchTimeSchedule();
-  }, [user]);
+  }, [user, paperList]);
 
   const addTimeSchedule = async (e) => {
     e.preventDefault();
-    const data = {
-      user: user._id,
-      schedule: timeSchedule,
-    };
+    const data = { schedule: timeSchedule };
     try {
-      // adding a new time schedule record
-      const response = await axios.post("time_schedule/" + user._id, data);
+      const department = paperList?.[0]?.department;
+      const response = await axios.post(`/api/department_schedule/${department}`, data);
       toast.success(response.data.message);
     } catch (err) {
       // conflict, record already exists
       if (err.response.status === 409) {
         // updating existing record
-        const response = await axios.patch("time_schedule/" + user._id, data);
+        const department = paperList?.[0]?.department;
+        const response = await axios.patch(`/api/department_schedule/${department}`, data);
         toast.success(response.data.message);
       } else setError(err);
     } finally {
@@ -82,7 +80,7 @@ const TimeScheduleForm = () => {
 
   const deleteTimeSchedule = async (e) => {
     e.preventDefault();
-    const response = await axios.delete("time_schedule/" + id);
+    const response = await axios.delete("/api/time_schedule/" + id);
     toast.success(response.data.message, {
       icon: ({ theme, type }) => <FaTrash />,
     });
@@ -131,8 +129,8 @@ const TimeScheduleForm = () => {
                           >
                             <option defaultValue>--</option>
                             {paperList?.map((paper) => (
-                              <option key={paper._id} value={paper.name}>
-                                {paper.paper}
+                              <option key={paper.id} value={paper.name}>
+                                {paper.name}
                               </option>
                             ))}
                           </select>

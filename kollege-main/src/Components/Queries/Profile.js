@@ -10,8 +10,21 @@ const Profile = () => {
 
   React.useEffect(() => {
     const getProfile = async () => {
-      const response = await axios.get(`${user.userType}/${user._id}`);
-      setProfile(response.data);
+      try {
+        // Our backend exposes /api/students/{id} and /api/teachers/{id}
+        const resource = user.userType === "student" ? "students" : "teachers";
+        const id = user.id || user._id;
+        const response = await axios.get(`/api/${resource}/${id}`);
+        setProfile(response.data);
+      } catch (e) {
+        // Fallback: derive minimal profile from logged-in user
+        setProfile({
+          name: user?.name || user?.username,
+          role: user?.role,
+          email: user?.email,
+          id: user?.id || user?._id,
+        });
+      }
     };
     getProfile();
   }, [user]);
@@ -28,7 +41,7 @@ const Profile = () => {
             )}
             <div className="flex flex-col items-start justify-center">
               <h2 className=" whitespace-break-spaces text-3xl font-bold text-violet-950 underline decoration-inherit decoration-2 underline-offset-4 dark:mt-0 dark:text-slate-400 md:text-6xl">
-                {user?.name}
+                {profile?.name || user?.name || user?.username}
               </h2>
               <p className="text-lg capitalize sm:text-xl md:text-2xl">
                 {user?.role}
