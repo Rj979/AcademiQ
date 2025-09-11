@@ -31,6 +31,7 @@ const Login = () => {
       // Do nothing until a user type is selected
       return;
     } else {
+      setError(""); // Clear any previous errors
       setButtonText("Loading...");
       slowLoadingIndicator();
       try {
@@ -46,8 +47,26 @@ const Login = () => {
         await setUser(userData);
         localStorage.setItem("userDetails", JSON.stringify(userData));
       } catch (err) {
-        setError(err);
+        // Handle different types of errors
+        let errorMessage = "Login failed. Please try again.";
+        
+        if (err.response) {
+          // Server responded with error status
+          if (err.response.status === 401) {
+            errorMessage = "Invalid username or password";
+          } else if (err.response.status >= 500) {
+            errorMessage = "Server error. Please try again later.";
+          } else if (err.response.data?.error) {
+            errorMessage = err.response.data.error;
+          }
+        } else if (err.request) {
+          // Network error
+          errorMessage = "Network error. Please check your connection.";
+        }
+        
+        setError({ message: errorMessage });
         setButtonText("Login");
+        setMessage(""); // Clear the loading message
       }
     }
   };
@@ -94,7 +113,10 @@ const Login = () => {
                       value="staff"
                       id="staff"
                       name="userType"
-                      onClick={() => setUserType("staff")}
+                      onClick={() => {
+                        setUserType("staff");
+                        if (error) setError(""); // Clear error when changing user type
+                      }}
                     />
                   </label>
                   <label
@@ -108,7 +130,10 @@ const Login = () => {
                       value="student"
                       id="student"
                       name="userType"
-                      onClick={() => setUserType("student")}
+                      onClick={() => {
+                        setUserType("student");
+                        if (error) setError(""); // Clear error when changing user type
+                      }}
                     />
                   </label>
                 </div>
@@ -134,7 +159,10 @@ const Login = () => {
                   autoComplete="off"
                   name="username"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    if (error) setError(""); // Clear error when user starts typing
+                  }}
                   />
                 <input
                   className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
@@ -144,14 +172,16 @@ const Login = () => {
                   required
                   name="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (error) setError(""); // Clear error when user starts typing
+                  }}
                   />
                 <button
                   className="mb-1 flex h-10 w-full items-center justify-center gap-1 rounded-md border-[1.5px] border-solid border-violet-900 bg-slate-800 p-1 font-bold tracking-wide text-slate-200 hover:bg-violet-900 focus:bg-violet-900 disabled:cursor-wait dark:border-violet-300 dark:bg-violet-600 dark:text-slate-50 dark:hover:bg-slate-900 dark:focus:bg-slate-900 lg:mb-2 "
                   type="submit"
                   value="Login"
                   disabled={buttonText !== "Login"}
-                  onClick={(e) => handleLogin(e)}
                   >
                   {!(buttonText === "Login") && (
                     <PiSpinnerGapBold className="animate-spin" />
