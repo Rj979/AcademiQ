@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/Academiq-frontend/static/css/main.d3db73df.css",
-    "main.js": "/Academiq-frontend/static/js/main.0721f40e.js",
-    "static/js/671.8e14a129.chunk.js": "/Academiq-frontend/static/js/671.8e14a129.chunk.js",
-    "static/js/877.0457d532.chunk.js": "/Academiq-frontend/static/js/877.0457d532.chunk.js",
-    "static/js/359.9958c60f.chunk.js": "/Academiq-frontend/static/js/359.9958c60f.chunk.js",
-    "static/js/336.787c216f.chunk.js": "/Academiq-frontend/static/js/336.787c216f.chunk.js",
-    "static/js/983.50e18a4f.chunk.js": "/Academiq-frontend/static/js/983.50e18a4f.chunk.js",
-    "static/js/223.9b3d5051.chunk.js": "/Academiq-frontend/static/js/223.9b3d5051.chunk.js",
-    "static/js/814.e434d84e.chunk.js": "/Academiq-frontend/static/js/814.e434d84e.chunk.js",
-    "index.html": "/Academiq-frontend/index.html",
-    "main.d3db73df.css.map": "/Academiq-frontend/static/css/main.d3db73df.css.map",
-    "main.0721f40e.js.map": "/Academiq-frontend/static/js/main.0721f40e.js.map",
-    "671.8e14a129.chunk.js.map": "/Academiq-frontend/static/js/671.8e14a129.chunk.js.map",
-    "877.0457d532.chunk.js.map": "/Academiq-frontend/static/js/877.0457d532.chunk.js.map",
-    "359.9958c60f.chunk.js.map": "/Academiq-frontend/static/js/359.9958c60f.chunk.js.map",
-    "336.787c216f.chunk.js.map": "/Academiq-frontend/static/js/336.787c216f.chunk.js.map",
-    "983.50e18a4f.chunk.js.map": "/Academiq-frontend/static/js/983.50e18a4f.chunk.js.map",
-    "223.9b3d5051.chunk.js.map": "/Academiq-frontend/static/js/223.9b3d5051.chunk.js.map",
-    "814.e434d84e.chunk.js.map": "/Academiq-frontend/static/js/814.e434d84e.chunk.js.map"
+    "main.css": "/Academiq/static/css/main.d3db73df.css",
+    "main.js": "/Academiq/static/js/main.8db4aedb.js",
+    "static/js/671.8e14a129.chunk.js": "/Academiq/static/js/671.8e14a129.chunk.js",
+    "static/js/877.0457d532.chunk.js": "/Academiq/static/js/877.0457d532.chunk.js",
+    "static/js/359.9958c60f.chunk.js": "/Academiq/static/js/359.9958c60f.chunk.js",
+    "static/js/336.787c216f.chunk.js": "/Academiq/static/js/336.787c216f.chunk.js",
+    "static/js/983.50e18a4f.chunk.js": "/Academiq/static/js/983.50e18a4f.chunk.js",
+    "static/js/223.9b3d5051.chunk.js": "/Academiq/static/js/223.9b3d5051.chunk.js",
+    "static/js/814.e434d84e.chunk.js": "/Academiq/static/js/814.e434d84e.chunk.js",
+    "index.html": "/Academiq/index.html",
+    "main.d3db73df.css.map": "/Academiq/static/css/main.d3db73df.css.map",
+    "main.8db4aedb.js.map": "/Academiq/static/js/main.8db4aedb.js.map",
+    "671.8e14a129.chunk.js.map": "/Academiq/static/js/671.8e14a129.chunk.js.map",
+    "877.0457d532.chunk.js.map": "/Academiq/static/js/877.0457d532.chunk.js.map",
+    "359.9958c60f.chunk.js.map": "/Academiq/static/js/359.9958c60f.chunk.js.map",
+    "336.787c216f.chunk.js.map": "/Academiq/static/js/336.787c216f.chunk.js.map",
+    "983.50e18a4f.chunk.js.map": "/Academiq/static/js/983.50e18a4f.chunk.js.map",
+    "223.9b3d5051.chunk.js.map": "/Academiq/static/js/223.9b3d5051.chunk.js.map",
+    "814.e434d84e.chunk.js.map": "/Academiq/static/js/814.e434d84e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d3db73df.css",
-    "static/js/main.0721f40e.js"
+    "static/js/main.8db4aedb.js"
   ]
 }
