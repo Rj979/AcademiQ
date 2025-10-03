@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://academiq-api-latest.onrender.com:8080",
   // Backend Spring Boot API runs on port 8080 with /api prefix
   headers: { "Content-Type": "application/json" },
 });
