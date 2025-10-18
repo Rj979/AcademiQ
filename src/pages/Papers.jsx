@@ -1,10 +1,43 @@
 import React, { useMemo, useState } from 'react';
 
 const seedPapers = [
-  { id: 71, code: 'CS104', name: 'Data Structures', category: 'DSA', credits: 4, department: 'CSE' },
-  { id: 74, code: 'CS202', name: 'DBMS', category: 'DBMS', credits: 4, department: 'CSE' },
-  { id: 79, code: 'CS302', name: 'Machine Learning', category: 'ML', credits: 4, department: 'CSE' },
+  { id: 71, code: 'CS104', name: 'Data Structures', category: 'Data Structures and Algorithms', credits: 4, department: 'Computer Science and Engineering' },
+  { id: 74, code: 'CS202', name: 'Database Management Systems', category: 'Database Management Systems', credits: 4, department: 'Computer Science and Engineering' },
+  { id: 79, code: 'CS302', name: 'Machine Learning', category: 'Machine Learning', credits: 4, department: 'Computer Science and Engineering' },
+  { id: 80, code: 'CS303', name: 'Artificial Intelligence', category: 'Artificial Intelligence', credits: 4, department: 'Computer Science and Engineering' },
+  { id: 81, code: 'CS304', name: 'Mobile Application Development', category: 'Mobile Application Development', credits: 4, department: 'Computer Science and Engineering' },
+  { id: 82, code: 'CS305', name: 'Cybersecurity', category: 'Cybersecurity', credits: 3, department: 'Computer Science and Engineering' },
+  { id: 83, code: 'EC100', name: 'Basic Electronics', category: 'Digital Signal Processing', credits: 4, department: 'Electronics and Communication Engineering' },
+  { id: 84, code: 'EC101', name: 'Digital Electronics', category: 'Digital Signal Processing', credits: 4, department: 'Electronics and Communication Engineering' },
+  { id: 89, code: 'ME100', name: 'Engineering Mechanics', category: 'Structural Analysis', credits: 4, department: 'Mechanical Engineering' },
+  { id: 90, code: 'ME101', name: 'Thermodynamics', category: 'Thermodynamics', credits: 4, department: 'Mechanical Engineering' },
 ];
+
+const seedNotes = {
+  71: [
+    { id: 1, content: 'Arrays and Linked Lists fundamentals covered' },
+    { id: 2, content: 'Tree traversal algorithms - Inorder, Preorder, Postorder' },
+    { id: 3, content: 'Graph algorithms - BFS and DFS implementation' }
+  ],
+  74: [
+    { id: 4, content: 'SQL queries and database design principles' },
+    { id: 5, content: 'Normalization forms and ER diagrams' },
+    { id: 6, content: 'Transaction management and ACID properties' }
+  ],
+  79: [
+    { id: 7, content: 'Linear regression and gradient descent' },
+    { id: 8, content: 'Classification algorithms - SVM, Random Forest' },
+    { id: 9, content: 'Neural networks and deep learning basics' }
+  ],
+  80: [
+    { id: 10, content: 'Search algorithms - A* and minimax' },
+    { id: 11, content: 'Knowledge representation and expert systems' }
+  ],
+  83: [
+    { id: 12, content: 'Semiconductor physics and diode characteristics' },
+    { id: 13, content: 'Transistor operation and amplifier circuits' }
+  ]
+};
 
 function Papers() {
   const [papers, setPapers] = useState(() => {
@@ -13,7 +46,7 @@ function Papers() {
   });
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem('paperNotes');
-    return saved ? JSON.parse(saved) : {};
+    return saved ? JSON.parse(saved) : seedNotes;
   });
 
   const [newPaper, setNewPaper] = useState({ code: '', name: '', category: '', credits: 3, department: 'CSE' });

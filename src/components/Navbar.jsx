@@ -3,8 +3,29 @@ import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const location = useLocation();
+  
+  // Get user from localStorage or use default
   const storedUserJson = localStorage.getItem('user');
-  const user = storedUserJson ? JSON.parse(storedUserJson) : { username: 'student', firstName: 'Test', lastName: 'User', roles: ['STUDENT'] };
+  let user;
+  
+  if (storedUserJson) {
+    try {
+      user = JSON.parse(storedUserJson);
+    } catch (e) {
+      user = null;
+    }
+  }
+  
+  // Default user if none found
+  if (!user) {
+    user = { 
+      username: 'student', 
+      firstName: 'Test', 
+      lastName: 'Student', 
+      roles: ['STUDENT'],
+      email: 'student@academiq.com'
+    };
+  }
 
   const linkStyle = (path) => ({
     padding: '8px 12px',
@@ -36,14 +57,14 @@ function Navbar() {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <div style={{ textAlign: 'right' }}>
-          <div style={{ fontWeight: 600 }}>{user.firstName} {user.lastName}</div>
-          <div style={{ fontSize: 12, color: '#6b7280' }}>@{user.username} · {user.roles?.[0] || 'USER'}</div>
+          <div style={{ fontWeight: 600 }}>{user.firstName || 'User'} {user.lastName || ''}</div>
+          <div style={{ fontSize: 12, color: '#6b7280' }}>@{user.username || 'user'} · {user.roles?.[0] || 'USER'}</div>
         </div>
         <div style={{
           width: 36, height: 36, borderRadius: '50%', background: '#e5e7eb',
           display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700
         }}>
-          {String(user.firstName || 'U').charAt(0)}
+          {String(user.firstName || 'U').charAt(0).toUpperCase()}
         </div>
       </div>
     </div>

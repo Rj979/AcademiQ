@@ -3,7 +3,24 @@ import React, { useState } from 'react';
 const seed = [
   { id: 1, day: 'Monday', slot: '09:00-10:00', paper: 'CS104' },
   { id: 2, day: 'Monday', slot: '10:00-11:00', paper: 'CS202' },
-  { id: 3, day: 'Tuesday', slot: '09:00-10:00', paper: 'CS302' },
+  { id: 3, day: 'Monday', slot: '11:00-12:00', paper: 'CS302' },
+  { id: 4, day: 'Monday', slot: '14:00-15:00', paper: 'CS303' },
+  { id: 5, day: 'Monday', slot: '15:00-16:00', paper: 'CS304' },
+  { id: 6, day: 'Tuesday', slot: '09:00-10:00', paper: 'EC100' },
+  { id: 7, day: 'Tuesday', slot: '10:00-11:00', paper: 'EC101' },
+  { id: 8, day: 'Tuesday', slot: '11:00-12:00', paper: 'ME100' },
+  { id: 9, day: 'Tuesday', slot: '14:00-15:00', paper: 'ME101' },
+  { id: 10, day: 'Wednesday', slot: '09:00-10:00', paper: 'CS104' },
+  { id: 11, day: 'Wednesday', slot: '10:00-11:00', paper: 'CS202' },
+  { id: 12, day: 'Wednesday', slot: '11:00-12:00', paper: 'CS302' },
+  { id: 13, day: 'Wednesday', slot: '14:00-15:00', paper: 'CS303' },
+  { id: 14, day: 'Thursday', slot: '09:00-10:00', paper: 'EC100' },
+  { id: 15, day: 'Thursday', slot: '10:00-11:00', paper: 'EC101' },
+  { id: 16, day: 'Thursday', slot: '11:00-12:00', paper: 'ME100' },
+  { id: 17, day: 'Thursday', slot: '14:00-15:00', paper: 'ME101' },
+  { id: 18, day: 'Friday', slot: '09:00-10:00', paper: 'CS304' },
+  { id: 19, day: 'Friday', slot: '10:00-11:00', paper: 'CS104' },
+  { id: 20, day: 'Friday', slot: '11:00-12:00', paper: 'CS202' },
 ];
 
 function TimeSchedule() {

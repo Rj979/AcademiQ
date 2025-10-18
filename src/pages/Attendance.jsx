@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
 const seed = [
-  { id: 1, date: '2025-10-01', paper: 'CS104', present: 42, total: 50 },
-  { id: 2, date: '2025-10-02', paper: 'CS202', present: 38, total: 50 },
+  { id: 1, date: '2025-01-15', paper: 'CS104', present: 42, total: 50 },
+  { id: 2, date: '2025-01-16', paper: 'CS202', present: 38, total: 50 },
+  { id: 3, date: '2025-01-17', paper: 'CS302', present: 45, total: 50 },
+  { id: 4, date: '2025-01-18', paper: 'CS303', present: 40, total: 50 },
+  { id: 5, date: '2025-01-19', paper: 'CS304', present: 35, total: 50 },
+  { id: 6, date: '2025-01-20', paper: 'EC100', present: 48, total: 50 },
+  { id: 7, date: '2025-01-21', paper: 'EC101', present: 44, total: 50 },
+  { id: 8, date: '2025-01-22', paper: 'ME100', present: 39, total: 50 },
+  { id: 9, date: '2025-01-23', paper: 'ME101', present: 41, total: 50 },
+  { id: 10, date: '2025-01-24', paper: 'CS104', present: 43, total: 50 },
 ];
 
 function Attendance() {

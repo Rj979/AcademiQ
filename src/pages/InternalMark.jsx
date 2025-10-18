@@ -2,7 +2,25 @@ import React, { useState } from 'react';
 
 const seed = [
   { id: 1, paper: 'CS104', student: 'CB.EN.U4CSE22001', mark: 18 },
-  { id: 2, paper: 'CS202', student: 'CB.EN.U4CSE22002', mark: 16 },
+  { id: 2, paper: 'CS104', student: 'CB.EN.U4CSE22002', mark: 16 },
+  { id: 3, paper: 'CS104', student: 'CB.EN.U4CSE22003', mark: 19 },
+  { id: 4, paper: 'CS202', student: 'CB.EN.U4CSE22001', mark: 17 },
+  { id: 5, paper: 'CS202', student: 'CB.EN.U4CSE22002', mark: 15 },
+  { id: 6, paper: 'CS202', student: 'CB.EN.U4CSE22003', mark: 18 },
+  { id: 7, paper: 'CS302', student: 'CB.EN.U4CSE22001', mark: 16 },
+  { id: 8, paper: 'CS302', student: 'CB.EN.U4CSE22002', mark: 14 },
+  { id: 9, paper: 'CS302', student: 'CB.EN.U4CSE22003', mark: 17 },
+  { id: 10, paper: 'CS303', student: 'CB.EN.U4CSE22001', mark: 19 },
+  { id: 11, paper: 'CS303', student: 'CB.EN.U4CSE22002', mark: 16 },
+  { id: 12, paper: 'CS303', student: 'CB.EN.U4CSE22003', mark: 18 },
+  { id: 13, paper: 'EC100', student: 'CB.EN.U4ECE22001', mark: 17 },
+  { id: 14, paper: 'EC100', student: 'CB.EN.U4ECE22002', mark: 15 },
+  { id: 15, paper: 'EC101', student: 'CB.EN.U4ECE22001', mark: 18 },
+  { id: 16, paper: 'EC101', student: 'CB.EN.U4ECE22002', mark: 16 },
+  { id: 17, paper: 'ME100', student: 'CB.EN.U4MEE22001', mark: 17 },
+  { id: 18, paper: 'ME100', student: 'CB.EN.U4MEE22002', mark: 19 },
+  { id: 19, paper: 'ME101', student: 'CB.EN.U4MEE22001', mark: 16 },
+  { id: 20, paper: 'ME101', student: 'CB.EN.U4MEE22002', mark: 18 },
 ];
 
 function InternalMark() {
